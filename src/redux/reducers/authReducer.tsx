@@ -1,4 +1,4 @@
-import {Types} from '../types/Types';
+import {Types} from '../../types/Types';
 
 interface State {
 	id: string;

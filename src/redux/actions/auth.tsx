@@ -1,17 +1,17 @@
-import {Types} from '../types/Types';
-import {AnyAction, Dispatch} from 'redux';
-import {firebase, googleAuthProvider} from '../firebase/firebaseConfig';
+import {Types} from '../../types/Types';
+import {Dispatch} from 'redux';
+import {firebase, googleAuthProvider} from '../../firebase/firebaseConfig';
 
-const startLoginEmailPassword = (email: string, password: string) => {
-	return (dispatch: Dispatch<AnyAction>) => {
+const startLoginEmailPassword = (email: string, password: string): any => {
+	return (dispatch: Dispatch) => {
 		setTimeout(() => {
 			dispatch(login('123', 'Tomas'));
 		}, 3500);
 	};
 };
 
-const startGoogleLogin = () => {
-	return (dispatch: any) => {
+const startGoogleLogin = (): any => {
+	return (dispatch: Dispatch) => {
 		firebase
 			.auth()
 			.signInWithPopup(googleAuthProvider)

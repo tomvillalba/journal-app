@@ -3,7 +3,9 @@ lockfileVersion: 5.4
 specifiers:
   '@types/react': ^18.0.26
   '@types/react-dom': ^18.0.9
+  '@types/react-redux': ^7.1.25
   '@types/react-router-dom': ^5.3.3
+  '@types/validator': ^13.7.11
   '@vitejs/plugin-react-swc': ^3.0.0
   firebase: 8.10.0
   react: ^18.2.0
@@ -14,9 +16,11 @@ specifiers:
   redux-thunk: ^2.4.2
   sass: ^1.57.1
   typescript: ^4.9.3
+  validator: ^13.7.0
   vite: ^4.0.0
 
 dependencies:
+  '@types/react-redux': 7.1.25
   firebase: 8.10.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -25,11 +29,13 @@ dependencies:
   redux: 4.2.0
   redux-thunk: 2.4.2_redux@4.2.0
   sass: 1.57.1
+  validator: 13.7.0
 
 devDependencies:
   '@types/react': 18.0.27
   '@types/react-dom': 18.0.10
   '@types/react-router-dom': 5.3.3
+  '@types/validator': 13.7.11
   '@vitejs/plugin-react-swc': 3.0.1_vite@4.0.4
   typescript: 4.9.4
   vite: 4.0.4_sass@1.57.1
@@ -753,6 +759,15 @@ packages:
     dependencies:
       '@types/react': 18.0.27
 
+  /@types/react-redux/7.1.25:
+    resolution: {integrity: sha512-bAGh4e+w5D8dajd6InASVIyCo4pZLJ66oLb80F9OBLO1gKESbZcRCJpTT6uLXX+HAB57zw1WTdwJdAsewuTweg==}
+    dependencies:
+      '@types/hoist-non-react-statics': 3.3.1
+      '@types/react': 18.0.27
+      hoist-non-react-statics: 3.3.2
+      redux: 4.2.0
+    dev: false
+
   /@types/react-router-dom/5.3.3:
     resolution: {integrity: sha512-kpqnYK4wcdm5UaWI3fLcELopqLrHgLqNsdpHauzlQktfkHL3npOSwtj1Uz9oKBAzs7lFtVkV8j83voAz2D8fhw==}
     dependencies:
@@ -781,6 +796,10 @@ packages:
   /@types/use-sync-external-store/0.0.3:
     resolution: {integrity: sha512-EwmlvuaxPNej9+T4v5AuBPJa2x2UOJVdjCtDHgcDqitUeOtjnJKJ+apYjVcAoBEMjKW1VVFGZLUb5+qqa09XFA==}
     dev: false
+
+  /@types/validator/13.7.11:
+    resolution: {integrity: sha512-WqTos+CnAKN64YwyBMhgUYhb5VsTNKwUY6AuzG5qu9/pFZJar/RJFMZBXwX7VS+uzYi+lIAr3WkvuWqEI9F2eg==}
+    dev: true
 
   /@vitejs/plugin-react-swc/3.0.1_vite@4.0.4:
     resolution: {integrity: sha512-3GQ2oruZO9j8dSHcI0MUeOZQBhjYyDQsF/pKY4Px+CJxn0M16OhgFeEzUjeuwci4zhhjoNIDE9aFNaV5GMQ09g==}
@@ -1367,6 +1386,11 @@ packages:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
       react: 18.2.0
+    dev: false
+
+  /validator/13.7.0:
+    resolution: {integrity: sha512-nYXQLCBkpJ8X6ltALua9dRrZDHVYxjJ1wgskNt1lH9fzGjs3tgojGSCBjmEPwkWS1y29+DrizMTW19Pr9uB2nw==}
+    engines: {node: '>= 0.10'}
     dev: false
 
   /value-equal/1.0.1:
