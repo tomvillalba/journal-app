@@ -1,6 +1,27 @@
 import {Types} from '../types/Types';
+import {AnyAction, Dispatch} from 'redux';
+import {firebase, googleAuthProvider} from '../firebase/firebaseConfig';
 
-const login = (id: string, name: string) => {
+const startLoginEmailPassword = (email: string, password: string) => {
+	return (dispatch: Dispatch<AnyAction>) => {
+		setTimeout(() => {
+			dispatch(login('123', 'Tomas'));
+		}, 3500);
+	};
+};
+
+const startGoogleLogin = () => {
+	return (dispatch: any) => {
+		firebase
+			.auth()
+			.signInWithPopup(googleAuthProvider)
+			.then(({user}) => {
+				dispatch(login(user?.uid, user?.displayName));
+			});
+	};
+};
+
+const login = (id: string | undefined, name: string | null | undefined) => {
 	return {
 		type: Types.login,
 		payload: {
@@ -19,4 +40,6 @@ const logout = () => {
 export const auth = {
 	login,
 	logout,
+	startLoginEmailPassword,
+	startGoogleLogin,
 };

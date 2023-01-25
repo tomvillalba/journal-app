@@ -16,8 +16,13 @@ export const LoginScreen = () => {
 	const {email, password} = formValues;
 
 	const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-		dispatch(auth.login('123', 'Tomas'));
+		e.preventDefault(); //@ts-ignore
+		dispatch(auth.startLoginEmailPassword(email, password));
+	};
+
+	const handleGoogleLogin = () => {
+		//@ts-ignore
+		dispatch(auth.startGoogleLogin());
 	};
 
 	return (
@@ -52,7 +57,9 @@ export const LoginScreen = () => {
 
 				<div className="auth__social-networks">
 					<p>Login with social networks</p>
-					<div className="google-btn">
+					<div
+						className="google-btn"
+						onClick={handleGoogleLogin}>
 						<div className="google-icon-wrapper">
 							<img
 								className="google-icon"
