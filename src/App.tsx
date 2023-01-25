@@ -1,10 +1,13 @@
-import { AppRouter } from './routers/AppRouter';
-// import './App.css';
+import {AppRouter} from './routers/AppRouter';
+import {Provider} from 'react-redux';
+import {store} from './store/store';
 
-function App() {
+const App = () => {
 	return (
-		<AppRouter />
+		<Provider store={store}>
+			<AppRouter />
+		</Provider>
 	);
-}
+};
 
 export default App;
