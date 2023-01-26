@@ -1,17 +1,17 @@
 import {Link} from 'react-router-dom';
 import {useForm} from '../../hooks/useForm';
 import {User} from '../../types/Types';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {auth} from '../../redux/actions/auth';
 
 const initialState: User = {
-	email: 'tomas@gmail.com',
-	password: '1234',
+	email: '',
+	password: '',
 };
 
 export const LoginScreen = () => {
 	const dispatch = useDispatch();
-
+	const {loading} = useSelector((state: any) => state.ui);
 	const {formValues, handleInputChange} = useForm(initialState);
 	const {email, password} = formValues;
 
@@ -50,7 +50,8 @@ export const LoginScreen = () => {
 
 				<button
 					type="submit"
-					className="btn btn-primary btn-block">
+					className="btn btn-primary btn-block"
+					disabled={loading}>
 					Ingresar
 				</button>
 

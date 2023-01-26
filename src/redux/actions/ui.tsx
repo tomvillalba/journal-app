@@ -12,8 +12,20 @@ const removeError = () => {
 		type: Types.uiRemoveError,
 	};
 };
+const startLoading = () => {
+	return {
+		type: Types.uiStartLoading,
+	};
+};
 
+const finishLoading = () => {
+	return {
+		type: Types.uiFinishLoading,
+	};
+};
 export const ui = {
 	setError,
 	removeError,
+	startLoading,
+	finishLoading,
 };

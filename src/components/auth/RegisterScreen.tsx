@@ -2,18 +2,20 @@ import validator from 'validator';
 import {Link} from 'react-router-dom';
 import {useForm} from '../../hooks/useForm';
 import {UserRegister} from '../../types/Types';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {ui} from '../../redux/actions/ui';
+import {auth} from '../../redux/actions/auth';
 
 const initialValues: UserRegister = {
-	name: 'tomas',
-	email: 'tomas@gmail.com',
-	password: '123456',
-	password2: '123456',
+	name: '',
+	email: '',
+	password: '',
+	password2: '',
 };
 
 export const RegisterScreen = () => {
 	const dispatch = useDispatch();
+	const {loading} = useSelector((state: any) => state.ui);
 	const {formValues, handleInputChange} = useForm(initialValues);
 	const {name, email, password, password2} = formValues as UserRegister;
 
@@ -21,7 +23,7 @@ export const RegisterScreen = () => {
 		e.preventDefault();
 
 		if (isFormValid()) {
-			console.log('Formulario correcto');
+			dispatch(auth.startRegisterWithEmailPasswordName(email, password, name));
 		}
 	};
 
@@ -45,16 +47,6 @@ export const RegisterScreen = () => {
 			<h3 className="auth__title">Register</h3>
 
 			<form onSubmit={handleRegister}>
-				<div className="auth__alert-error">Uuups... Algo salió mal</div>
-				<input
-					type="text"
-					placeholder="email"
-					name="email"
-					autoComplete="off"
-					className="auth__input"
-					value={email}
-					onChange={handleInputChange}
-				/>
 				<input
 					type="text"
 					placeholder="name"
@@ -62,6 +54,15 @@ export const RegisterScreen = () => {
 					autoComplete="off"
 					className="auth__input"
 					value={name}
+					onChange={handleInputChange}
+				/>
+				<input
+					type="text"
+					placeholder="email"
+					name="email"
+					autoComplete="off"
+					className="auth__input"
+					value={email}
 					onChange={handleInputChange}
 				/>
 				<input
@@ -83,6 +84,7 @@ export const RegisterScreen = () => {
 
 				<button
 					type="submit"
+					disabled={loading}
 					className="btn btn-primary btn-block mb-5">
 					Register
 				</button>
