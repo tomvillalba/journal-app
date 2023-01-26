@@ -1,8 +1,10 @@
+import validator from 'validator';
 import {Link} from 'react-router-dom';
 import {useForm} from '../../hooks/useForm';
 import {User} from '../../types/Types';
 import {useDispatch, useSelector} from 'react-redux';
 import {auth} from '../../redux/actions/auth';
+import Swal from 'sweetalert2';
 
 const initialState: User = {
 	email: '',
@@ -17,9 +19,13 @@ export const LoginScreen = () => {
 
 	const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		if (!email && !password)
+			return Swal.fire('Error', 'Email and Password are required', 'error');
+		if (!validator.isEmail(email))
+			return Swal.fire('Error', 'Enter a valid email format', 'error');
+		if (!password) return Swal.fire('Error', 'Password are required', 'error');
 		dispatch(auth.startLoginEmailPassword(email, password));
 	};
-
 	const handleGoogleLogin = () => {
 		dispatch(auth.startGoogleLogin());
 	};

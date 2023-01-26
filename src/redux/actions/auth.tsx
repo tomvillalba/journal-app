@@ -41,8 +41,12 @@ const startRegisterWithEmailPasswordName = (
 
 const startGoogleLogin = (): any => {
 	return async (dispatch: Dispatch) => {
-		const {user} = await firebase.auth().signInWithPopup(googleAuthProvider);
-		dispatch(login(user?.uid, user?.displayName));
+		try {
+			const {user} = await firebase.auth().signInWithPopup(googleAuthProvider);
+			dispatch(login(user?.uid, user?.displayName));
+		} catch (error: any) {
+			Swal.fire('Error', error.message, 'error');
+		}
 	};
 };
 
