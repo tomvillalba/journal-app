@@ -31,7 +31,7 @@ export const AppRouter = () => {
 
 	return (
 		<Router>
-			<div>
+			<div className="xl:container mx-auto  ">
 				<Switch>
 					<PublicRoute
 						path="/auth"

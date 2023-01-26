@@ -44,54 +44,90 @@ export const RegisterScreen = () => {
 	};
 	return (
 		<>
-			<h3 className="auth__title">Register</h3>
+			<form
+				onSubmit={handleRegister}
+				className="bg-slate-200 rounded-md p-5 flex flex-col">
+				<h3 className="text-xl text-slate-900 font-bold mb-3 mt-3 ">Register</h3>
+				<div className="mb-2">
+					<label
+						className="block text-gray-700 font-medium mb-2"
+						htmlFor="name">
+						Name
+					</label>
+					<input
+						type="text"
+						id="name"
+						placeholder="name"
+						name="name"
+						autoComplete="off"
+						className="w-full border border-gray-400 p-2 rounded-md"
+						value={name}
+						onChange={handleInputChange}
+					/>
+				</div>
 
-			<form onSubmit={handleRegister}>
-				<input
-					type="text"
-					placeholder="name"
-					name="name"
-					autoComplete="off"
-					className="auth__input"
-					value={name}
-					onChange={handleInputChange}
-				/>
-				<input
-					type="text"
-					placeholder="email"
-					name="email"
-					autoComplete="off"
-					className="auth__input"
-					value={email}
-					onChange={handleInputChange}
-				/>
-				<input
-					type="password"
-					placeholder="password"
-					name="password"
-					className="auth__input"
-					value={password}
-					onChange={handleInputChange}
-				/>
-				<input
-					type="password"
-					placeholder="confirm password"
-					name="password2"
-					className="auth__input"
-					value={password2}
-					onChange={handleInputChange}
-				/>
+				<div className="mb-2">
+					<label
+						className="block text-gray-700 font-medium mb-2"
+						htmlFor="email">
+						Email
+					</label>
+					<input
+						type="text"
+						id="email"
+						placeholder="email"
+						name="email"
+						autoComplete="off"
+						className="w-full border border-gray-400 p-2 rounded-md"
+						value={email}
+						onChange={handleInputChange}
+					/>
+				</div>
+
+				<div className="mb-2">
+					<label
+						className="block text-gray-700 font-medium mb-2"
+						htmlFor="password">
+						Password
+					</label>
+					<input
+						type="password"
+						id="password"
+						placeholder="password"
+						name="password"
+						className="w-full border border-gray-400 p-2 rounded-md"
+						value={password}
+						onChange={handleInputChange}
+					/>
+				</div>
+
+				<div className="mb-2">
+					<label
+						className="block text-gray-700 font-medium mb-2"
+						htmlFor="password2">
+						Confirm Password
+					</label>
+					<input
+						type="password"
+						id="password2"
+						placeholder="confirm password"
+						name="password2"
+						className="w-full border border-gray-400 p-2 rounded-md"
+						value={password2}
+						onChange={handleInputChange}
+					/>
+				</div>
 
 				<button
 					type="submit"
 					disabled={loading}
-					className="btn btn-primary btn-block mb-5">
+					className="bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg">
 					Register
 				</button>
 
 				<Link
 					to="/auth/login"
-					className="link">
+					className="text-blue-500 hover:text-blue-700">
 					Already registered?
 				</Link>
 			</form>

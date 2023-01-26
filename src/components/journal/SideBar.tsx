@@ -10,22 +10,22 @@ export const SideBar = () => {
 	};
 
 	return (
-		<aside className="journal__sidebar">
-			<div className="journal__sidebar-navbar">
-				<h3 className="mt-5">
-					<i className="far fa-moon"></i>
-					<span> Tomás</span>
+		<aside className="h-full w-full md:w-1/5 bg-gray-800 px-2">
+			<div className="flex justify-between items-center p-5">
+				<h3 className="text-lg font-medium text-white">
+					<i className="far fa-moon text-gray-300"></i>
+					<span className="ml-2">Tomás</span>
 				</h3>
 
 				<button
 					onClick={handleLogout}
-					className="btn">
+					className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600">
 					Logout
 				</button>
 			</div>
-			<div className="journal__new-entry">
-				<i className="far fa-calendar-plus fa-5x"></i>
-				<p className="mt-5">New entry</p>
+			<div className="flex flex-col items-center justify-center p-5 text-center hover:bg-gray-700 cursor-pointer">
+				<i className="far fa-calendar-plus fa-5x text-white"></i>
+				<p className="mt-5 text-lg font-medium text-white">New entry</p>
 			</div>
 			<JournalEntries />
 		</aside>

@@ -32,15 +32,16 @@ export const LoginScreen = () => {
 
 	return (
 		<>
-			<h3 className="auth__title">Login</h3>
-
-			<form onSubmit={handleLogin}>
+			<form
+				onSubmit={handleLogin}
+				className="p-5">
+				<h3 className="text-lg font-medium mb-2">Login</h3>
 				<input
 					type="text"
 					placeholder="email"
 					name="email"
 					autoComplete="off"
-					className="auth__input"
+					className="block w-full rounded-md border-2 border-gray-300 p-2 mb-2"
 					value={email}
 					onChange={handleInputChange}
 				/>
@@ -49,20 +50,20 @@ export const LoginScreen = () => {
 					type="password"
 					placeholder="password"
 					name="password"
-					className="auth__input"
+					className="block w-full rounded-md border-2 border-gray-300 p-2 mb-2"
 					value={password}
 					onChange={handleInputChange}
 				/>
 
 				<button
 					type="submit"
-					className="btn btn-primary btn-block"
+					className="bg-indigo-500 text-white rounded-md py-2 px-4 w-full hover:bg-indigo-600"
 					disabled={loading}>
 					Ingresar
 				</button>
 
-				<div className="auth__social-networks">
-					<p>Login with social networks</p>
+				<div className="my-2">
+					<p className="text-center text-gray-500">Login with social networks</p>
 					<div
 						className="google-btn"
 						onClick={handleGoogleLogin}>
@@ -81,7 +82,7 @@ export const LoginScreen = () => {
 
 				<Link
 					to="/auth/register"
-					className="link">
+					className="text-indigo-500 font-medium hover:underline">
 					Create new Account
 				</Link>
 			</form>
