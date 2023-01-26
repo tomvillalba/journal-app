@@ -1,8 +1,8 @@
 # JournalApp
 
-Este es un proyecto de una aplicación de diario creado con
-[React](https://reactjs.org/)+[TypeScript](https://www.typescriptlang.org/),
-utilizando[pnpm](https://pnpm.js.org/) como administrador de paquetes.
+Este es un proyecto de una aplicación de diario creada con
+[React](https://reactjs.org/)+[TypeScript](https://www.typescriptlang.org/), utilizando
+[pnpm](https://pnpm.js.org/) como administrador de paquetes.
 
 ## Características
 
