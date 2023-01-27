@@ -6,8 +6,8 @@ module.exports = {
 	],
 	theme: {
 		extend: {
-			root: {
-				background: "red",
+			formInput: {
+				100: '#1a202c'
 			}
 		},
 	},

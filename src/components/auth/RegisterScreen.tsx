@@ -60,7 +60,7 @@ export const RegisterScreen = () => {
 						placeholder="name"
 						name="name"
 						autoComplete="off"
-						className="w-full border border-gray-400 p-2 rounded-md"
+						className="w-full border border-gray-400 p-2 rounded-md focus:outline-none focus:border-indigo-400"
 						value={name}
 						onChange={handleInputChange}
 					/>
@@ -78,7 +78,7 @@ export const RegisterScreen = () => {
 						placeholder="email"
 						name="email"
 						autoComplete="off"
-						className="w-full border border-gray-400 p-2 rounded-md"
+						className="w-full border border-gray-400 p-2 rounded-md focus:outline-none focus:border-indigo-400"
 						value={email}
 						onChange={handleInputChange}
 					/>
@@ -95,7 +95,7 @@ export const RegisterScreen = () => {
 						id="password"
 						placeholder="password"
 						name="password"
-						className="w-full border border-gray-400 p-2 rounded-md"
+						className="w-full border border-gray-400 p-2 rounded-md focus:outline-none focus:border-indigo-400"
 						value={password}
 						onChange={handleInputChange}
 					/>
@@ -112,7 +112,7 @@ export const RegisterScreen = () => {
 						id="password2"
 						placeholder="confirm password"
 						name="password2"
-						className="w-full border border-gray-400 p-2 rounded-md"
+						className="w-full border border-gray-400 p-2 rounded-md focus:outline-none focus:border-indigo-400"
 						value={password2}
 						onChange={handleInputChange}
 					/>

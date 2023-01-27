@@ -41,7 +41,7 @@ export const LoginScreen = () => {
 					placeholder="email"
 					name="email"
 					autoComplete="off"
-					className="block w-full rounded-md border-2 border-gray-300 p-2 mb-2"
+					className="block w-full rounded-md border-2 border-gray-300 p-2 mb-2 focus:outline-none focus:border-indigo-400"
 					value={email}
 					onChange={handleInputChange}
 				/>
@@ -50,7 +50,7 @@ export const LoginScreen = () => {
 					type="password"
 					placeholder="password"
 					name="password"
-					className="block w-full rounded-md border-2 border-gray-300 p-2 mb-2"
+					className="block w-full rounded-md border-2 border-gray-300 p-2 mb-2 focus:outline-none focus:border-indigo-400"
 					value={password}
 					onChange={handleInputChange}
 				/>
