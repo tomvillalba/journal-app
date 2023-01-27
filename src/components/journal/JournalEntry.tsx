@@ -2,7 +2,7 @@ export const JournalEntry = () => {
 	return (
 		<div className="bg-slate-100 rounded-lg shadow-md p-2">
 			<div
-				className="bg-cover bg-center h-40 w-full rounded-t-lg"
+				className="bg-cover bg-center h-40 w-72 lg:w-full rounded-t-lg"
 				style={{
 					backgroundImage:
 						'url(https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png)',

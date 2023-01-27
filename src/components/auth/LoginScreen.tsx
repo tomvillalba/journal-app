@@ -35,29 +35,44 @@ export const LoginScreen = () => {
 			<form
 				onSubmit={handleLogin}
 				className="p-5">
-				<h3 className="text-lg font-medium mb-2">Login</h3>
-				<input
-					type="text"
-					placeholder="email"
-					name="email"
-					autoComplete="off"
-					className="block w-full rounded-md border-2 border-gray-300 p-2 mb-2 focus:outline-none focus:border-indigo-400"
-					value={email}
-					onChange={handleInputChange}
-				/>
-
-				<input
-					type="password"
-					placeholder="password"
-					name="password"
-					className="block w-full rounded-md border-2 border-gray-300 p-2 mb-2 focus:outline-none focus:border-indigo-400"
-					value={password}
-					onChange={handleInputChange}
-				/>
+				<h3 className="text-slate-600 text-xl font-medium mb-2 text-center pt-1">
+					Inicio de sesión
+				</h3>
+				<div>
+					<label
+						className="text-slate-500 font-medium"
+						htmlFor="email">
+						Email
+					</label>
+					<input
+						type="text"
+						placeholder="tom@example.com"
+						name="email"
+						autoComplete="off"
+						className="block w-full rounded-md border-2 border-gray-300 p-2 mb-2 focus:outline-none focus:border-indigo-400 hover:border-indigo-300"
+						value={email}
+						onChange={handleInputChange}
+					/>
+				</div>
+				<div>
+					<label
+						className="text-slate-500 font-medium "
+						htmlFor="password">
+						Password
+					</label>
+					<input
+						type="password"
+						placeholder="*******"
+						name="password"
+						className="block w-full rounded-md border-2 border-gray-300 p-2 mb-2 focus:outline-none focus:border-indigo-400 hover:border-indigo-300"
+						value={password}
+						onChange={handleInputChange}
+					/>
+				</div>
 
 				<button
 					type="submit"
-					className="bg-indigo-500 text-white rounded-md py-2 px-4 w-full hover:bg-indigo-600"
+					className="transition ease-in-out delay-150 bg-indigo-500 hover:scale-105 hover:bg-sky-700 duration-300 font-medium text-white py-2 px-4 rounded-lg w-full"
 					disabled={loading}>
 					Ingresar
 				</button>
@@ -65,7 +80,7 @@ export const LoginScreen = () => {
 				<div className="my-2">
 					<p className="text-center text-gray-500">Login with social networks</p>
 					<div
-						className="google-btn"
+						className="google-btn transition ease-in-out delay-150 duration-300 hover:scale-105"
 						onClick={handleGoogleLogin}>
 						<div className="google-icon-wrapper">
 							<img
@@ -82,7 +97,7 @@ export const LoginScreen = () => {
 
 				<Link
 					to="/auth/register"
-					className="text-indigo-500 font-medium hover:underline">
+					className="text-blue-500 hover:text-blue-700 font-medium">
 					Create new Account
 				</Link>
 			</form>

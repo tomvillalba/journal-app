@@ -11,10 +11,10 @@ export const SideBar = () => {
 
 	return (
 		<aside className="h-full w-full md:w-1/5 bg-gray-800 px-2">
-			<div className="flex justify-between items-center p-5">
+			<div className="flex justify-between items-center p-5 md:px-2 lg:px-5">
 				<h3 className="text-lg font-medium text-white">
 					<i className="far fa-moon text-gray-300"></i>
-					<span className="ml-2">Tomás</span>
+					<span className="ml-2 md:ml-0 lg:ml-2">Tomás</span>
 				</h3>
 
 				<button

@@ -1,10 +1,12 @@
-import validator from 'validator';
+import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
+import validator from 'validator';
+import Swal from 'sweetalert2';
 import {useForm} from '../../hooks/useForm';
 import {UserRegister} from '../../types/Types';
-import {useDispatch, useSelector} from 'react-redux';
 import {ui} from '../../redux/actions/ui';
 import {auth} from '../../redux/actions/auth';
+import {useEffect} from 'react';
 
 const initialValues: UserRegister = {
 	name: '',
@@ -27,15 +29,25 @@ export const RegisterScreen = () => {
 		}
 	};
 
+	const handleError = (error: string) => {
+		Swal.fire('Error', error, 'error');
+	};
+
 	const isFormValid = () => {
 		if (name.trim().length === 0) {
-			dispatch(ui.setError('Name is required'));
+			const error = 'Name is required';
+			dispatch(ui.setError(error));
+			handleError(error);
 			return;
 		} else if (!validator.isEmail(email)) {
-			dispatch(ui.setError('Email is not valid'));
+			const error = 'Email is not valid';
+			dispatch(ui.setError(error));
+			handleError(error);
 			return;
 		} else if (password !== password2 || password.length < 5) {
-			dispatch(ui.setError('Password should be at least 6 characters and match each other'));
+			const error = 'Password should be at least 6 characters and match each other';
+			dispatch(ui.setError(error));
+			handleError(error);
 			return;
 		}
 
@@ -47,55 +59,55 @@ export const RegisterScreen = () => {
 			<form
 				onSubmit={handleRegister}
 				className="bg-slate-200 rounded-md p-5 flex flex-col">
-				<h3 className="text-xl text-slate-900 font-bold mb-3 mt-3 ">Register</h3>
-				<div className="mb-2">
+				<h3 className="text-slate-600 text-xl font-medium mb-2 text-center pt-1">Register</h3>
+				<div className="mb-1">
 					<label
-						className="block text-gray-700 font-medium mb-2"
+						className="block text-slate-500 font-medium mb-1"
 						htmlFor="name">
 						Name
 					</label>
 					<input
 						type="text"
 						id="name"
-						placeholder="name"
+						placeholder="Pepe Ramirez"
 						name="name"
 						autoComplete="off"
-						className="w-full border border-gray-400 p-2 rounded-md focus:outline-none focus:border-indigo-400"
+						className="w-full border border-gray-400 p-2 rounded-md focus:outline-none focus:border-indigo-400 hover:border-indigo-300"
 						value={name}
 						onChange={handleInputChange}
 					/>
 				</div>
 
-				<div className="mb-2">
+				<div className="mb-1">
 					<label
-						className="block text-gray-700 font-medium mb-2"
+						className="block text-slate-500 font-medium mb-1"
 						htmlFor="email">
 						Email
 					</label>
 					<input
 						type="text"
 						id="email"
-						placeholder="email"
+						placeholder="pepe@example.com"
 						name="email"
 						autoComplete="off"
-						className="w-full border border-gray-400 p-2 rounded-md focus:outline-none focus:border-indigo-400"
+						className="w-full border border-gray-400 p-2 rounded-md focus:outline-none focus:border-indigo-400 hover:border-indigo-300"
 						value={email}
 						onChange={handleInputChange}
 					/>
 				</div>
 
-				<div className="mb-2">
+				<div className="mb-1">
 					<label
-						className="block text-gray-700 font-medium mb-2"
+						className="block text-slate-500 font-medium mb-1"
 						htmlFor="password">
 						Password
 					</label>
 					<input
 						type="password"
 						id="password"
-						placeholder="password"
+						placeholder="********"
 						name="password"
-						className="w-full border border-gray-400 p-2 rounded-md focus:outline-none focus:border-indigo-400"
+						className="w-full border border-gray-400 p-2 rounded-md focus:outline-none focus:border-indigo-400 hover:border-indigo-300"
 						value={password}
 						onChange={handleInputChange}
 					/>
@@ -103,16 +115,16 @@ export const RegisterScreen = () => {
 
 				<div className="mb-2">
 					<label
-						className="block text-gray-700 font-medium mb-2"
+						className="block text-slate-500 font-medium mb-1"
 						htmlFor="password2">
 						Confirm Password
 					</label>
 					<input
 						type="password"
 						id="password2"
-						placeholder="confirm password"
+						placeholder="********"
 						name="password2"
-						className="w-full border border-gray-400 p-2 rounded-md focus:outline-none focus:border-indigo-400"
+						className="w-full border border-gray-400 p-2 rounded-md focus:outline-none focus:border-indigo-400 hover:border-indigo-300"
 						value={password2}
 						onChange={handleInputChange}
 					/>
@@ -121,13 +133,13 @@ export const RegisterScreen = () => {
 				<button
 					type="submit"
 					disabled={loading}
-					className="bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg">
+					className="transition ease-in-out delay-150 bg-indigo-500 hover:scale-105 hover:bg-sky-700 duration-300 font-medium text-white py-2 px-4 rounded-lg">
 					Register
 				</button>
 
 				<Link
 					to="/auth/login"
-					className="text-blue-500 hover:text-blue-700">
+					className="text-blue-500 hover:text-blue-700 font-medium">
 					Already registered?
 				</Link>
 			</form>
