@@ -1,10 +1,11 @@
 import validator from 'validator';
+import Swal from 'sweetalert2';
 import {Link} from 'react-router-dom';
-import {useForm} from '../../hooks/useForm';
-import {User} from '../../types/Types';
 import {useDispatch, useSelector} from 'react-redux';
 import {auth} from '../../redux/actions/auth';
-import Swal from 'sweetalert2';
+import {useForm} from '../../hooks/useForm';
+import {AppState, User} from '../../types';
+import '../../styles/googleButton.css';
 
 const initialState: User = {
 	email: '',
@@ -13,7 +14,7 @@ const initialState: User = {
 
 export const LoginScreen = () => {
 	const dispatch = useDispatch();
-	const {loading} = useSelector((state: any) => state.ui);
+	const {loading} = useSelector((state: AppState) => state.ui);
 	const {formValues, handleInputChange} = useForm(initialState);
 	const {email, password} = formValues;
 

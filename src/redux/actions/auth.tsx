@@ -1,7 +1,7 @@
 import Swal from 'sweetalert2';
-import {firebase, googleAuthProvider} from '../../firebase/firebaseConfig';
+import {firebase, googleAuthProvider} from '../../components/auth/firebase/firebaseConfig';
 import {Dispatch} from 'redux';
-import {Types} from '../../types/Types';
+import {Types} from '../../types';
 import {ui} from './ui';
 
 const startLoginEmailPassword = (email: string, password: string): any => {

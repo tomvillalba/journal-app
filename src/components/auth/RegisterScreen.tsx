@@ -3,10 +3,9 @@ import {Link} from 'react-router-dom';
 import validator from 'validator';
 import Swal from 'sweetalert2';
 import {useForm} from '../../hooks/useForm';
-import {UserRegister} from '../../types/Types';
+import {UserRegister, AppState} from '../../types';
 import {ui} from '../../redux/actions/ui';
 import {auth} from '../../redux/actions/auth';
-import {useEffect} from 'react';
 
 const initialValues: UserRegister = {
 	name: '',
@@ -17,7 +16,7 @@ const initialValues: UserRegister = {
 
 export const RegisterScreen = () => {
 	const dispatch = useDispatch();
-	const {loading} = useSelector((state: any) => state.ui);
+	const {loading} = useSelector((state: AppState) => state.ui);
 	const {formValues, handleInputChange} = useForm(initialValues);
 	const {name, email, password, password2} = formValues as UserRegister;
 

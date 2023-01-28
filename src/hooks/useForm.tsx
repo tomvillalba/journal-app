@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {User} from '../types/Types';
+import {User} from '../types';
 
 export const useForm = (initialState = {}) => {
 	const [formValues, setValues] = useState(initialState);
@@ -8,9 +8,7 @@ export const useForm = (initialState = {}) => {
 		setValues(initialState);
 	};
 
-	const handleInputChange = (
-		event: React.ChangeEvent<HTMLInputElement>
-	): void => {
+	const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
 		setValues({
 			...formValues,
 			[event.target.name]: event.target.value,

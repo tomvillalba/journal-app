@@ -6,6 +6,10 @@ export enum Types {
 	uiStartLoading = '[UI] Start loading',
 	uiFinishLoading = '[UI] Finish loading',
 }
+export interface Action {
+	type: Types;
+	payload?: any;
+}
 
 export interface User {
 	email: string;
@@ -23,4 +27,19 @@ export interface RouterProps {
 	component: any;
 	exact?: boolean;
 	path: string;
+}
+
+export interface AppState {
+	auth: AuthState;
+	ui: UiState;
+}
+
+export interface AuthState {
+	id: string;
+	name: string;
+}
+
+export interface UiState {
+	error: string | null;
+	loading: boolean;
 }

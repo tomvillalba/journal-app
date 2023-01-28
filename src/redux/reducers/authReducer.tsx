@@ -1,11 +1,11 @@
-import {Types} from '../../types/Types';
+import {Action, Types} from '../../types';
 
 interface State {
 	id: string;
 	name: string;
 }
 
-export const authReducer = (state: State = {} as State, action: any) => {
+export const authReducer = (state: State = {} as State, action: Action) => {
 	switch (action.type) {
 		case Types.login:
 			return {

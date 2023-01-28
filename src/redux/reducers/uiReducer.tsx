@@ -1,15 +1,11 @@
-import {Types} from '../../types/Types';
-interface initialStateInterface {
-	loading: boolean;
-	error: string | null;
-}
+import {Action, Types, UiState} from '../../types';
 
-const initialState: initialStateInterface = {
+const initialState: UiState = {
 	loading: false,
 	error: null,
 };
 
-export const uiReducer = (state = initialState, action: any) => {
+export const uiReducer = (state = initialState, action: Action): UiState => {
 	switch (action.type) {
 		case Types.uiSetError:
 			return {

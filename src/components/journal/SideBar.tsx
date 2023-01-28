@@ -1,10 +1,11 @@
 import {JournalEntries} from './JournalEntries';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {auth} from '../../redux/actions/auth';
+import {AppState} from '../../types';
 
 export const SideBar = () => {
 	const dispatch = useDispatch();
-
+	const {name} = useSelector((state: AppState) => state.auth);
 	const handleLogout = () => {
 		dispatch(auth.startLogout());
 	};
@@ -14,7 +15,7 @@ export const SideBar = () => {
 			<div className="flex justify-between items-center p-5 md:px-2 lg:px-5">
 				<h3 className="text-lg font-medium text-white">
 					<i className="far fa-moon text-gray-300"></i>
-					<span className="ml-2 md:ml-0 lg:ml-2">Tomás</span>
+					<span className="ml-2 md:ml-0 lg:ml-2">{name.split(' ', 1)}</span>
 				</h3>
 
 				<button
