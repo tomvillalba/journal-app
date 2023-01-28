@@ -28,7 +28,7 @@ export const AppRouter = () => {
 
 	return (
 		<Router>
-			<div className="mx-auto">
+			<>
 				<Switch>
 					<PublicRoute
 						path="/auth"
@@ -45,7 +45,7 @@ export const AppRouter = () => {
 
 					<Redirect to={'/auth/login'} />
 				</Switch>
-			</div>
+			</>
 		</Router>
 	);
 };

@@ -1,7 +1,7 @@
 import {JournalEntry} from './JournalEntry';
 
 export const JournalEntries = () => {
-	const entries = [1, 2, 3, 4, 5];
+	const entries = [1, 2, 3, 4, 5, 1, 1, 1, 2, 12];
 
 	return (
 		<div className="flex flex-wrap justify-center gap-2 m-2 sm:m-0">

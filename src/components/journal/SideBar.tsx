@@ -11,7 +11,7 @@ export const SideBar = () => {
 	};
 
 	return (
-		<aside className="h-full w-full md:w-1/5 bg-gray-800 px-2">
+		<aside className=" w-full md:w-3/5 bg-gray-800 px-2 pb-20">
 			<div className="flex justify-between items-center p-5 md:px-2 lg:px-5">
 				<h3 className="text-lg font-medium text-white">
 					<i className="far fa-moon text-gray-300"></i>
@@ -24,9 +24,11 @@ export const SideBar = () => {
 					Logout
 				</button>
 			</div>
-			<div className="flex flex-col items-center justify-center p-5 text-center hover:bg-gray-700 cursor-pointer">
-				<i className="far fa-calendar-plus fa-5x text-white"></i>
-				<p className="mt-5 text-lg font-medium text-white">New entry</p>
+			<div className="flex flex-col items-center justify-center p-5 text-center ">
+				<div className="cursor-pointer text-white hover:scale-105 hover:text-emerald-600">
+					<i className="far fa-calendar-plus fa-5x"></i>
+					<p className="mt-5 text-lg font-medium">New entry</p>
+				</div>
 			</div>
 			<JournalEntries />
 		</aside>

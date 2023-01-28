@@ -1,12 +1,13 @@
 export const JournalEntry = () => {
 	return (
 		<div className="bg-slate-100 rounded-lg shadow-md p-2">
-			<div
-				className="bg-cover bg-center h-40 w-72 lg:w-full rounded-t-lg"
-				style={{
-					backgroundImage:
-						'url(https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png)',
-				}}></div>
+			<div className="bg-cover bg-center h-40 w-full rounded-t-lg">
+				<img
+					src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png"
+					alt="img"
+					className="rounded-t-lg w-full h-full object-cover"
+				/>
+			</div>
 			<div className="mt-5">
 				<p className="text-lg font-medium text-gray-800">Un nuevo día</p>
 				<p className="text-sm text-gray-600 mt-2">

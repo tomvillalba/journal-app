@@ -32,6 +32,7 @@ export interface RouterProps {
 export interface AppState {
 	auth: AuthState;
 	ui: UiState;
+	notes: NotesState;
 }
 
 export interface AuthState {
@@ -42,4 +43,17 @@ export interface AuthState {
 export interface UiState {
 	error: string | null;
 	loading: boolean;
+}
+
+export interface NotesState {
+	notes: Note[];
+	active: Note | null;
+}
+
+export interface Note {
+	id: string;
+	title: string;
+	body?: string;
+	date: number;
+	imageUrl?: string;
 }
