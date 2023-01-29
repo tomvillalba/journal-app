@@ -56,7 +56,7 @@ export interface UiState {
 }
 
 export interface NotesState {
-	notes: Note[];
+	notes: NoteActive[];
 	active: Note | null;
 }
 
@@ -70,7 +70,7 @@ export interface Note {
 export interface NoteActive {
 	id: string;
 	title: string;
-	body: string;
+	body?: string;
 	date: number;
-	imageUrl: string;
+	imageUrl?: string;
 }

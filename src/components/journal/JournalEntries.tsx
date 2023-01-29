@@ -1,12 +1,17 @@
 import {JournalEntry} from './JournalEntry';
+import {useSelector} from 'react-redux';
+import {AppState} from '../../types/index';
 
 export const JournalEntries = () => {
-	const entries = [1, 2, 3, 4, 5, 1, 1, 1, 2, 12];
+	const {notes} = useSelector((state: AppState) => state.notes);
 
 	return (
 		<div className="flex flex-wrap justify-center gap-2 m-2 sm:m-0">
-			{entries.map((entry, idx) => (
-				<JournalEntry key={idx} />
+			{notes.map((note, idx) => (
+				<JournalEntry
+					key={idx}
+					{...note}
+				/>
 			))}
 		</div>
 	);

@@ -16,7 +16,7 @@ export const SideBar = () => {
 	};
 
 	return (
-		<aside className=" w-full md:w-3/5 bg-gray-800 px-2 pb-20">
+		<aside className="w-full min-h-screen md:w-[50vw] lg:w-[40vw] bg-gray-800 px-2 pb-20">
 			<div className="flex justify-between items-center p-5 md:px-2 lg:px-5">
 				<h3 className="text-lg font-medium text-white">
 					<i className="far fa-moon text-gray-300"></i>
@@ -32,7 +32,7 @@ export const SideBar = () => {
 
 			<div
 				onClick={handleAddNew}
-				className="flex flex-col items-center justify-center p-5 text-center ">
+				className="p-5 text-center">
 				<div className="cursor-pointer text-white hover:scale-105 hover:text-emerald-600">
 					<i className="far fa-calendar-plus fa-5x"></i>
 					<p className="mt-5 text-lg font-medium">New entry</p>

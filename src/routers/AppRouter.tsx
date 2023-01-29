@@ -4,9 +4,10 @@ import {JournalScreen} from '../components/journal/JournalScreen';
 import {useEffect, useState} from 'react';
 import firebase from 'firebase/app';
 import {useDispatch} from 'react-redux';
-import {auth} from '../redux/actions/auth';
 import {PrivateRoute} from './PrivateRoute';
 import {PublicRoute} from './PublicRoute';
+import {auth} from '../redux/actions/auth';
+import {notes} from '../redux/actions/notes';
 
 export const AppRouter = () => {
 	const dispatch = useDispatch();
@@ -14,10 +15,14 @@ export const AppRouter = () => {
 	const [logged, setLogged] = useState(false);
 
 	useEffect(() => {
-		firebase.auth().onAuthStateChanged((user) => {
-			user?.uid
-				? dispatch(auth.login(user.uid, user.displayName)) && setLogged(true)
-				: setLogged(false);
+		firebase.auth().onAuthStateChanged(async (user) => {
+			if (user?.uid) {
+				dispatch(auth.login(user.uid, user.displayName));
+				setLogged(true);
+				dispatch(notes.startLoadingNotes(user.uid));
+			} else {
+				setLogged(false);
+			}
 			setChecking(false);
 		});
 	}, []);

@@ -6,9 +6,7 @@ module.exports = {
 	],
 	theme: {
 		extend: {
-			formInput: {
-				100: '#1a202c'
-			}
+
 		},
 	},
 	plugins: [],

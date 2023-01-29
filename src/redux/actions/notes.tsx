@@ -1,6 +1,7 @@
 import {Dispatch} from '../store/store';
-import {Action, AppState, Note, Types} from '../../types/index';
+import {Action, AppState, Note, NoteActive, Types} from '../../types/index';
 import {db} from '../../components/auth/firebase/firebaseConfig';
+import {loadNotes} from '../../helpers/loadNotes';
 
 const startNewNote = (): any => {
 	return async (dispatch: Dispatch, getState: () => AppState) => {
@@ -16,8 +17,7 @@ const startNewNote = (): any => {
 		dispatch(activeNote(document.id, newNote));
 	};
 };
-
-export const activeNote = (id: string, note: Note): Action => {
+const activeNote = (id: string, note: Note): Action => {
 	return {
 		type: Types.notesActive,
 		payload: {
@@ -27,6 +27,23 @@ export const activeNote = (id: string, note: Note): Action => {
 	};
 };
 
+const setNotes = (notes: NoteActive[]): Action => {
+	return {
+		type: Types.notesLoad,
+		payload: notes,
+	};
+};
+
+const startLoadingNotes = (id: string): any => {
+	return async (dispatch: Dispatch) => {
+		const notesData = await loadNotes(id);
+		dispatch(notes.setNotes(notesData));
+	};
+};
+
 export const notes = {
 	startNewNote,
+	activeNote,
+	setNotes,
+	startLoadingNotes,
 };
