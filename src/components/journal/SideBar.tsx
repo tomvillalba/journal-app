@@ -2,12 +2,17 @@ import {JournalEntries} from './JournalEntries';
 import {useDispatch, useSelector} from 'react-redux';
 import {auth} from '../../redux/actions/auth';
 import {AppState} from '../../types';
+import {notes} from '../../redux/actions/notes';
 
 export const SideBar = () => {
 	const dispatch = useDispatch();
 	const {name} = useSelector((state: AppState) => state.auth);
 	const handleLogout = () => {
 		dispatch(auth.startLogout());
+	};
+
+	const handleAddNew = () => {
+		dispatch(notes.startNewNote());
 	};
 
 	return (
@@ -24,12 +29,16 @@ export const SideBar = () => {
 					Logout
 				</button>
 			</div>
-			<div className="flex flex-col items-center justify-center p-5 text-center ">
+
+			<div
+				onClick={handleAddNew}
+				className="flex flex-col items-center justify-center p-5 text-center ">
 				<div className="cursor-pointer text-white hover:scale-105 hover:text-emerald-600">
 					<i className="far fa-calendar-plus fa-5x"></i>
 					<p className="mt-5 text-lg font-medium">New entry</p>
 				</div>
 			</div>
+
 			<JournalEntries />
 		</aside>
 	);

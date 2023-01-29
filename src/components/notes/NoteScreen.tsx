@@ -1,10 +1,6 @@
-import {NotesAppBar} from './NotesAppBar';
-
 export const NoteScreen = () => {
 	return (
 		<div className="bg-white w-full h-full">
-			<NotesAppBar />
-
 			<div className="px-3 py-2">
 				<input
 					type="text"
