@@ -6,7 +6,7 @@ export const JournalEntries = () => {
 	const {notes} = useSelector((state: AppState) => state.notes);
 
 	return (
-		<div className="flex flex-wrap justify-center gap-2 m-2 sm:m-0">
+		<div className="flex flex-wrap justify-center gap-x-3 gap-y-2 m-2 sm:m-0">
 			{notes.map((note, idx) => (
 				<JournalEntry
 					key={idx}

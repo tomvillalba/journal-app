@@ -1,4 +1,4 @@
-import {NotesState, Action, Types, NoteActive} from '../../types';
+import {NotesState, Action, Types, Note} from '../../types';
 
 const initialState: NotesState = {
 	notes: [],
@@ -12,14 +12,20 @@ export const notesReducer = (state: NotesState = initialState, action: Action) =
 				...state,
 				active: {
 					...action.payload,
-				} as NoteActive,
+				} as Note,
 			};
 		case Types.notesLoad:
 			return {
 				...state,
 				notes: [...action.payload],
 			};
-
+		case Types.notesUpdated:
+			return {
+				...state,
+				notes: state.notes.map((note) =>
+					note.id === action.payload.id ? action.payload.note : note
+				),
+			};
 		default:
 			return state;
 	}

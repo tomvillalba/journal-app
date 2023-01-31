@@ -1,7 +1,8 @@
 import {Dispatch} from '../store/store';
-import {Action, AppState, Note, NoteActive, Types} from '../../types/index';
+import {Action, AppState, Note, Types} from '../../types/index';
 import {db} from '../../components/auth/firebase/firebaseConfig';
 import {loadNotes} from '../../helpers/loadNotes';
+import Swal from 'sweetalert2';
 
 const startNewNote = (): any => {
 	return async (dispatch: Dispatch, getState: () => AppState) => {
@@ -27,7 +28,7 @@ const activeNote = (id: string, note: Note): Action => {
 	};
 };
 
-const setNotes = (notes: NoteActive[]): Action => {
+const setNotes = (notes: Note[]): Action => {
 	return {
 		type: Types.notesLoad,
 		payload: notes,
@@ -41,9 +42,39 @@ const startLoadingNotes = (id: string): any => {
 	};
 };
 
+const startSaveNote = (note: Note): any => {
+	return async (dispatch: Dispatch, getState: () => AppState) => {
+		const {id} = getState().auth;
+		if (!note.imageUrl) {
+			delete note.imageUrl;
+		}
+		const noteToFirestore = {...note};
+		delete noteToFirestore.id;
+		try {
+			await db.doc(`${id}/journal/notes/${note.id}`).update(noteToFirestore);
+		} catch {
+			Swal.fire('Error', 'Error al guardar la nota', 'error');
+		}
+		dispatch(refreshNote(note.id as string, note));
+		Swal.fire('Saved', note.title, 'success');
+	};
+};
+
+const refreshNote = (id: string, note: Note) => {
+	return {
+		type: Types.notesUpdated,
+		payload: {
+			id,
+			note,
+		},
+	};
+};
+
 export const notes = {
 	startNewNote,
 	activeNote,
 	setNotes,
 	startLoadingNotes,
+	startSaveNote,
+	refreshNote,
 };

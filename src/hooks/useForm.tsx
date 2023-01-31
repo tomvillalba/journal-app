@@ -1,23 +1,21 @@
 import {useState} from 'react';
 import {User} from '../types';
 
-export const useForm = (initialState = {}) => {
+export const useForm = <T extends object>(initialState: T) => {
 	const [formValues, setValues] = useState(initialState);
 
-	const reset = () => {
-		setValues(initialState);
+	const reset = (newFormState = initialState) => {
+		setValues(newFormState);
 	};
 
-	const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+	const handleInputChange = (
+		event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+	): void => {
 		setValues({
 			...formValues,
 			[event.target.name]: event.target.value,
 		});
 	};
 
-	return {formValues, handleInputChange, reset} as {
-		formValues: User;
-		handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-		reset: () => void;
-	};
+	return {formValues, handleInputChange, reset};
 };
