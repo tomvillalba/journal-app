@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {auth} from '../../redux/actions/auth';
 import {AppState} from '../../types';
 import {notes} from '../../redux/actions/notes';
+import {MenuHamburguesa} from '../ui/MenuHamburguesa';
 
 export const SideBar = () => {
 	const dispatch = useDispatch();
@@ -29,11 +30,50 @@ export const SideBar = () => {
 					<span className="ml-1 md:ml-2 ">{name?.split(' ', 1)}</span>
 				</h3>
 
-				<button
-					onClick={handleLogout}
-					className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600">
-					Logout
-				</button>
+				<MenuHamburguesa>
+					<ul>
+						<li className="mb-1 ">
+							<a
+								className="block p-4 text-xl font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
+								href="#">
+								Home
+							</a>
+						</li>
+						<li className="mb-1">
+							<a
+								className="block p-4 text-xl font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
+								href="#">
+								Home
+							</a>
+						</li>
+						<li className="mb-1">
+							<a
+								className="block p-4 text-xl font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
+								href="#">
+								Home
+							</a>
+						</li>
+						<li className="mb-1">
+							<a
+								className="block p-4 text-xl font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
+								href="#">
+								Home
+							</a>
+						</li>
+						<li className="mb-1">
+							<a
+								className="block p-4 text-xl font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
+								href="#">
+								Home
+							</a>
+						</li>
+					</ul>
+					<button
+						onClick={handleLogout}
+						className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 absolute bottom-5 ">
+						Logout
+					</button>
+				</MenuHamburguesa>
 			</div>
 
 			<div

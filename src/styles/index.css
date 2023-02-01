@@ -21,3 +21,9 @@ body {
 	overflow-y: scroll !important;
 	max-height: 100vh !important;
 }
+
+@media (max-width: 767px) {
+	.app-left::-webkit-scrollbar {
+		width: 6px;
+	}
+}
