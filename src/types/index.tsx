@@ -1,7 +1,6 @@
 export enum Types {
 	login = '[Auth] Login',
 	logout = '[Auth] Logout',
-
 	uiSetError = '[UI] Set Error',
 	uiRemoveError = '[UI] Remove Error',
 
@@ -10,6 +9,7 @@ export enum Types {
 
 	notesAddNew = '[Notes] New note',
 	notesActive = '[Notes] Set active note',
+	noteClose = '[Notes] Close Active note',
 	notesLoad = '[Notes] Load notes',
 	notesUpdated = '[Notes] Updated note',
 	notesFileUrl = '[Notes] Updated image url',

@@ -7,6 +7,8 @@ import {notes} from '../../redux/actions/notes';
 export const SideBar = () => {
 	const dispatch = useDispatch();
 	const {name} = useSelector((state: AppState) => state.auth);
+	const {active} = useSelector((state: AppState) => state.notes);
+
 	const handleLogout = () => {
 		dispatch(auth.startLogout());
 	};
@@ -14,9 +16,13 @@ export const SideBar = () => {
 	const handleAddNew = () => {
 		dispatch(notes.startNewNote());
 	};
+	const screenWidth = window.screen.width;
 
 	return (
-		<aside className="w-full min-h-screen h-auto md:w-[50vw] lg:w-[40vw] bg-gray-800 px-2 pb-20 app-left">
+		<aside
+			className={`w-full min-h-screen h-auto md:w-[50vw] xl:w-[40vw] bg-gray-800 px-2 pb-20 app-left ${
+				(!active && screenWidth <= 1023) || screenWidth >= 1024 ? 'block' : 'hidden'
+			}`}>
 			<div className="flex justify-between items-center p-5 md:px-2 lg:px-5">
 				<h3 className="text-lg font-medium text-white">
 					<i className="far fa-moon text-gray-300"></i>

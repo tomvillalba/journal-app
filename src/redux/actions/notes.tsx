@@ -3,6 +3,7 @@ import {Action, AppState, Note, Types} from '../../types/index';
 import {db} from '../../components/auth/firebase/firebaseConfig';
 import {loadNotes} from '../../helpers/loadNotes';
 import Swal from 'sweetalert2';
+import {fileUpload} from '../../helpers/fileUpload';
 
 const startNewNote = (): any => {
 	return async (dispatch: Dispatch, getState: () => AppState) => {
@@ -28,6 +29,12 @@ const activeNote = (id: string, note: Note): Action => {
 	};
 };
 
+const closeNote = () => {
+	return {
+		type: Types.noteClose,
+	};
+};
+
 const setNotes = (notes: Note[]): Action => {
 	return {
 		type: Types.notesLoad,
@@ -45,7 +52,7 @@ const startLoadingNotes = (id: string): any => {
 const startSaveNote = (note: Note): any => {
 	return async (dispatch: Dispatch, getState: () => AppState) => {
 		const {id} = getState().auth;
-		if (!note.imageUrl) {
+		if (!note?.imageUrl) {
 			delete note.imageUrl;
 		}
 		const noteToFirestore = {...note};
@@ -70,11 +77,32 @@ const refreshNote = (id: string, note: Note) => {
 	};
 };
 
+const startUploading = (file: File): any => {
+	return async (dispatch: Dispatch, getState: () => AppState) => {
+		const active = getState().notes.active as Note;
+		Swal.fire({
+			title: 'Uploading...',
+			text: 'Please wait...',
+			allowOutsideClick: false,
+			didOpen: () => {
+				Swal.showLoading();
+			},
+		});
+		const fileUrl = await fileUpload(file);
+		active.imageUrl = fileUrl;
+		dispatch(notes.startSaveNote(active));
+		dispatch(notes.activeNote(active.id as string, active));
+		Swal.close();
+	};
+};
+
 export const notes = {
 	startNewNote,
 	activeNote,
+	closeNote,
 	setNotes,
 	startLoadingNotes,
 	startSaveNote,
 	refreshNote,
+	startUploading,
 };

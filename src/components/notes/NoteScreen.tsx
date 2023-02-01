@@ -7,9 +7,11 @@ import {notes} from '../../redux/actions/notes';
 export const NoteScreen = ({edit = false}) => {
 	const dispatch = useDispatch();
 	const note = useSelector((state: AppState) => state.notes.active as Note);
+	const {active} = useSelector((state: AppState) => state.notes);
 	const {formValues, handleInputChange, reset} = useForm<Note>(note);
 	const {body, title, imageUrl} = formValues;
 	const activeId = useRef(note?.id);
+	const mobileEditScreen = window.screen.width < 1024 && active;
 
 	useEffect(() => {
 		if (note?.id !== activeId.current) {
@@ -26,7 +28,6 @@ export const NoteScreen = ({edit = false}) => {
 		e.preventDefault();
 		dispatch(notes.startSaveNote(note));
 	};
-
 	return (
 		<form onSubmit={handleSave}>
 			<h2 className="font-bold text-3xl text-white text-center mb-5">
@@ -48,15 +49,20 @@ export const NoteScreen = ({edit = false}) => {
 				value={body}
 				name="body"
 				onChange={handleInputChange}></textarea>
-			<img
-				src={
-					imageUrl
-						? imageUrl
-						: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg'
-				}
-				alt="imagen"
-				className="rounded-lg mx-auto h-[40vh] mt-4 mb-2 object-contain aspect-[4/3] bg-white"
-			/>
+			{imageUrl ? (
+				<img
+					src={imageUrl}
+					alt="imagen"
+					className="rounded-lg mx-auto h-[40vh] mt-4 mb-2 object-contain aspect-[4/3] bg-white"
+				/>
+			) : (
+				<div
+					className={`rounded-lg mx-auto h-[40vh] mt-4 mb-2 object-contain aspect-[4/3] bg-white grid place-content-center ${
+						mobileEditScreen && 'overflow-hidden w-full'
+					}`}>
+					<p className="text-xl font-bold text-slate-500">¡Prueba a subir una foto!</p>
+				</div>
+			)}
 		</form>
 	);
 };

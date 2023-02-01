@@ -1,0 +1,39 @@
+.edit-btn {
+	background-color: #fff;
+	border: 1px solid #0077b5;
+	padding: 5px;
+	width: 55px;
+	height: 30px;
+	transition: 0.5s;
+	font-size: 17px;
+	border-radius: 10px;
+}
+
+.edit-btn p {
+	margin: 0;
+	padding: 0;
+	transition: 0.5s;
+	color: #0077b5;
+}
+
+.edit-btn svg {
+	margin: 0;
+	padding: 0;
+	opacity: 0;
+	transition: 0.5s;
+	height: 16px;
+	fill: #fff;
+}
+
+.edit-btn:hover p {
+	color: #fff;
+}
+
+.edit-btn:hover svg {
+	opacity: 1;
+}
+
+.edit-btn:hover {
+	background-color: #0077b5;
+	width: 70px;
+}
