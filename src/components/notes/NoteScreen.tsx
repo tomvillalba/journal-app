@@ -61,7 +61,7 @@ export const NoteScreen = ({edit = false}) => {
 				/>
 			) : (
 				<div
-					className={`rounded-lg mx-auto h-[40vh] mt-4 mb-2 object-contain aspect-[4/3] bg-white grid place-content-center ${
+					className={`rounded-lg mx-auto h-[40vh] mt-4 mb-2 bg-white grid place-content-center ${
 						mobileEditScreen && 'overflow-hidden w-full'
 					}`}>
 					<p className="text-xl font-bold text-slate-500">¡Prueba a subir una foto!</p>
