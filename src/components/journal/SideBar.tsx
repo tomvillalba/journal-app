@@ -21,12 +21,12 @@ export const SideBar = () => {
 	return (
 		<aside
 			className={`w-full min-h-screen h-auto md:w-[50vw] xl:w-[40vw] bg-gray-800 px-2 pb-20 app-left ${
-				(!active && screenWidth <= 1023) || screenWidth >= 1024 ? 'block' : 'hidden'
+				(!active && screenWidth <= 763) || screenWidth >= 768 ? 'block' : 'hidden'
 			}`}>
 			<div className="flex justify-between items-center p-5 md:px-2 lg:px-5">
 				<h3 className="text-lg font-medium text-white">
 					<i className="far fa-moon text-gray-300"></i>
-					<span className="ml-2 md:ml-0 lg:ml-2">{name?.split(' ', 1)}</span>
+					<span className="ml-1 md:ml-2 ">{name?.split(' ', 1)}</span>
 				</h3>
 
 				<button

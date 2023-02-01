@@ -7,16 +7,20 @@ import {notes} from '../../redux/actions/notes';
 export const NoteScreen = ({edit = false}) => {
 	const dispatch = useDispatch();
 	const note = useSelector((state: AppState) => state.notes.active as Note);
-	const {active} = useSelector((state: AppState) => state.notes);
 	const {formValues, handleInputChange, reset} = useForm<Note>(note);
 	const {body, title, imageUrl} = formValues;
 	const activeId = useRef(note?.id);
-	const mobileEditScreen = window.screen.width < 1024 && active;
+	const activeImg = useRef(note?.imageUrl);
+	const mobileEditScreen = window.screen.width < 1024 && note;
 
 	useEffect(() => {
 		if (note?.id !== activeId.current) {
 			reset(note);
 			activeId.current = note?.id;
+		}
+		if (note?.imageUrl !== activeImg.current) {
+			reset(note);
+			activeImg.current = note?.imageUrl;
 		}
 	}, [note, reset]);
 

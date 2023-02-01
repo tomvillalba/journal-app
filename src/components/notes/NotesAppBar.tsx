@@ -1,6 +1,7 @@
 import {useDispatch, useSelector} from 'react-redux';
 import {AppState, Note} from '../../types';
 import {notes} from '../../redux/actions/notes';
+import Swal from 'sweetalert2';
 
 export const NotesAppBar = () => {
 	const {active} = useSelector((state: AppState) => state.notes);
@@ -15,7 +16,9 @@ export const NotesAppBar = () => {
 	};
 	const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const file = e.target.files?.[0];
-
+		const formatValidate = ['image/png', 'image/jpeg'];
+		if (!formatValidate.includes(file?.type as string))
+			return Swal.fire('Error', 'Formato de imagen no válido', 'error');
 		if (file) {
 			dispatch(notes.startUploading(file));
 			e.target.value = '';
@@ -31,6 +34,7 @@ export const NotesAppBar = () => {
 			<input
 				id="fileSelector"
 				type="file"
+				accept="image/png, image/jpeg"
 				name="file"
 				style={{display: 'none'}}
 				onChange={handleFileChange}

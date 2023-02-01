@@ -77,3 +77,9 @@
 	line-height: 0;
 	font-size: 0.8em;
 }
+
+@media (max-width: 482px) {
+	.card {
+		width: 100%;
+	}
+}
