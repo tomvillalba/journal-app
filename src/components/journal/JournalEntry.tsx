@@ -7,10 +7,10 @@ import '../../styles/card.css';
 export const JournalEntry = ({id, date, title, body, imageUrl}: Note) => {
 	const noteDate = Moment(date);
 	const dispatch = useDispatch();
+
 	const handleEntryClick = () => {
 		dispatch(notes.activeNote(id as string, {date, title, body, imageUrl}));
 	};
-
 	return (
 		<div
 			onClick={handleEntryClick}

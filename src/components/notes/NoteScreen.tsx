@@ -3,6 +3,7 @@ import {AppState, Note} from '../../types';
 import {useForm} from '../../hooks/useForm';
 import {useEffect, useRef} from 'react';
 import {notes} from '../../redux/actions/notes';
+import {handlePictureUpload} from './NotesAppBar';
 
 export const NoteScreen = ({edit = false}) => {
 	const dispatch = useDispatch();
@@ -32,6 +33,7 @@ export const NoteScreen = ({edit = false}) => {
 		e.preventDefault();
 		dispatch(notes.startSaveNote(note));
 	};
+
 	return (
 		<form onSubmit={handleSave}>
 			<h2 className="font-bold text-3xl text-white text-center mb-5">
@@ -61,6 +63,7 @@ export const NoteScreen = ({edit = false}) => {
 				/>
 			) : (
 				<div
+					onClick={handlePictureUpload}
 					className={`rounded-lg mx-auto h-[40vh] mt-4 mb-2 bg-white grid place-content-center ${
 						mobileEditScreen && 'overflow-hidden w-full'
 					}`}>

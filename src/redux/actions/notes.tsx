@@ -17,6 +17,7 @@ const startNewNote = (): any => {
 
 		const document = await db.collection(`${id}/journal/notes`).add(newNote);
 		dispatch(activeNote(document.id, newNote));
+		dispatch(startLoadingNotes(id));
 	};
 };
 const activeNote = (id: string, note: Note): Action => {
@@ -77,6 +78,12 @@ const refreshNote = (id: string, note: Note) => {
 	};
 };
 
+const refreshNotes = () => {
+	return {
+		type: Types.notesRefresh,
+	};
+};
+
 const startUploading = (file: File): any => {
 	return async (dispatch: Dispatch, getState: () => AppState) => {
 		const active = getState().notes.active as Note;
@@ -104,5 +111,6 @@ export const notes = {
 	startLoadingNotes,
 	startSaveNote,
 	refreshNote,
+	refreshNotes,
 	startUploading,
 };

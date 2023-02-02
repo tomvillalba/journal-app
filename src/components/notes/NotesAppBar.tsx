@@ -3,6 +3,10 @@ import {AppState, Note} from '../../types';
 import {notes} from '../../redux/actions/notes';
 import Swal from 'sweetalert2';
 
+export const handlePictureUpload = () => {
+	const file = document.querySelector('#fileSelector') as HTMLInputElement;
+	file?.click();
+};
 export const NotesAppBar = () => {
 	const {active} = useSelector((state: AppState) => state.notes);
 	const dispatch = useDispatch();
@@ -10,10 +14,7 @@ export const NotesAppBar = () => {
 	const handleSave = () => {
 		dispatch(notes.startSaveNote(active as Note));
 	};
-	const handlePictureUpload = () => {
-		const file = document.querySelector('#fileSelector') as HTMLInputElement;
-		file?.click();
-	};
+
 	const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const file = e.target.files?.[0];
 		const formatValidate = ['image/png', 'image/jpeg'];

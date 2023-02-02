@@ -6,8 +6,10 @@ import {NotesAppBar} from '../notes/NotesAppBar';
 
 export const CreateJournal = () => {
 	const {active} = useSelector((state: AppState) => state.notes);
+
 	const screenWidth = window.screen.width;
 	const mobileEditScreen = screenWidth <= 768 && active;
+
 	return (
 		<main
 			className={` md:flex md:flex-col w-0 ${

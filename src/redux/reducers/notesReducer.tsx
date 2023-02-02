@@ -19,7 +19,6 @@ export const notesReducer = (state: NotesState = initialState, action: Action) =
 				...state,
 				active: null,
 			};
-
 		case Types.notesLoad:
 			return {
 				...state,

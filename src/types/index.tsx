@@ -7,6 +7,7 @@ export enum Types {
 	uiStartLoading = '[UI] Start loading',
 	uiFinishLoading = '[UI] Finish loading',
 
+	notesRefresh = '[Notes] Refresh notes',
 	notesAddNew = '[Notes] New note',
 	notesActive = '[Notes] Set active note',
 	noteClose = '[Notes] Close Active note',
