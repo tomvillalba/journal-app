@@ -13,7 +13,7 @@ export const JournalEntry = ({id, date, title, body, imageUrl}: Note) => {
 	return (
 		<div
 			onClick={handleEntryClick}
-			className="card h-auto">
+			className="card h-auto animate__animated animate__fadeIn animate__faster">
 			<div className={`img-section bg-[#56C4E5] ${imageUrl && 'bg-white'}`}>
 				{imageUrl ? (
 					<img

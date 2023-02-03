@@ -34,7 +34,7 @@ export const LoginScreen = () => {
 		<>
 			<form
 				onSubmit={handleLogin}
-				className="p-5">
+				className="p-5 animate__animated animate__fadeIn animate__faster">
 				<h3 className="text-slate-600 text-xl font-medium mb-2 text-center pt-1">
 					Inicio de sesión
 				</h3>

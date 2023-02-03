@@ -9,7 +9,7 @@ export const NothingSelected = () => {
 	return (
 		<div
 			onClick={handleAddNew}
-			className="text-center text-primary dark:text-primary-dark mt-12 cursor-pointer hover:text-secondary transition-all hover:scale-105">
+			className="text-center text-primary dark:text-primary-dark mt-12 cursor-pointer hover:text-secondary transition-all hover:scale-105 animate__animated animate__fadeIn animate__faster">
 			<p className="text-3xl font-medium ">Select something or create an entry!</p>
 			<i className="far fa-star fa-4x mt-5 "></i>
 		</div>

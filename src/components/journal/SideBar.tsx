@@ -10,7 +10,7 @@ export const SideBar = () => {
 	const dispatch = useDispatch();
 	const {name} = useSelector((state: AppState) => state.auth);
 	const {active} = useSelector((state: AppState) => state.notes);
-	const [dark, setDark] = useState(false);
+	const [dark, setDark] = useState(true);
 	const handleLogout = () => {
 		dispatch(auth.startLogout());
 	};
@@ -25,7 +25,6 @@ export const SideBar = () => {
 		setDark(!dark);
 	};
 	const screenWidth = window.screen.width;
-
 	return (
 		<aside
 			className={`w-full min-h-screen h-auto md:w-[50vw] xl:w-[40vw]  px-2 pb-20 app-left ${
@@ -76,7 +75,7 @@ export const SideBar = () => {
 						Logout
 					</button>
 				</MenuHamburguesa>
-				<h3 className="text-lg font-medium ">
+				<h3 className="text-lg font-medium">
 					<i
 						onClick={handleTheme}
 						className={`far ${dark ? 'fa-moon' : 'fa-sun'} transition-all`}></i>

@@ -57,7 +57,7 @@ export const RegisterScreen = () => {
 		<>
 			<form
 				onSubmit={handleRegister}
-				className="bg-slate-200 rounded-md p-5 flex flex-col">
+				className="bg-slate-200 rounded-md p-5 flex flex-col animate__animated animate__fadeIn animate__faster">
 				<h3 className="text-slate-600 text-xl font-medium mb-2 text-center pt-1">Register</h3>
 				<div className="mb-1">
 					<label

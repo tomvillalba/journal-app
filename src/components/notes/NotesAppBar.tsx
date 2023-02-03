@@ -26,10 +26,10 @@ export const NotesAppBar = () => {
 		}
 	};
 	return (
-		<nav className="flex justify-between">
+		<nav className="flex justify-between animate__animated animate__fadeIn animate__faster">
 			<button
 				onClick={handleCloseNote}
-				className="text-primary dark:text-primary-dark hover:text-blue-600 font-medium transition-all">
+				className="text-primary dark:text-primary-dark hover:text-blue-600 dark:hover:text-blue-600 font-medium transition-all">
 				Cerrar
 			</button>
 			<input
@@ -43,12 +43,12 @@ export const NotesAppBar = () => {
 			<div>
 				<button
 					onClick={handlePictureUpload}
-					className="text-primary dark:text-blue-500 hover:text-blue-600 font-medium mr-4 transition-all">
+					className="text-primary dark:text-blue-500 hover:text-blue-600 dark:hover:text-blue-600 font-medium mr-4 transition-all">
 					Subir Imagen
 				</button>
 				<button
 					onClick={handleSave}
-					className="text-primary dark:text-blue-500 hover:text-blue-600 font-medium transition-all">
+					className="text-primary dark:text-blue-500 hover:text-blue-600 dark:hover:text-blue-600 font-medium transition-all">
 					Guardar
 				</button>
 			</div>

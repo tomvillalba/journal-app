@@ -34,14 +34,15 @@ export const NoteScreen = ({edit = false}) => {
 		dispatch(notes.startSaveNote(note));
 	};
 
-	const handleDelete = () => {
+	const handleDelete = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+		e.stopPropagation();
 		dispatch(notes.startDeleting(note.id as string));
 	};
 
 	return (
 		<form
 			onSubmit={handleSave}
-			className="">
+			className="animate__animated animate__fadeIn animate__faster">
 			<h2 className="font-bold text-3xl  text-center mb-5">
 				{edit ? 'Editar una tarea' : 'Crear una tarea'}
 			</h2>
@@ -49,7 +50,7 @@ export const NoteScreen = ({edit = false}) => {
 				type="text"
 				placeholder="Some awesome title"
 				className={
-					'w-full p-2 mt-2 bg-transparent border-b-2 bg-red-500 border-slate-700 transition-all duration-500 focus:border-primary hover:border-primary outline-none'
+					'w-full p-2 mt-2 bg-transparent border-b-2 bg-red-500 border-slate-700 transition-all duration-500 focus:border-secondary hover:border-secondary dark:focus:border-primary dark:hover:border-primary outline-none'
 				}
 				autoComplete="off"
 				value={title}
@@ -58,31 +59,33 @@ export const NoteScreen = ({edit = false}) => {
 			/>
 			<textarea
 				placeholder="What happened today"
-				className="w-full p-2 mt-2 h-32 bg-transparent border-b-2 border-slate-700 transition-all duration-500 focus:border-primary hover:border-primary outline-none"
+				className="w-full p-2 mt-2 h-32 bg-transparent border-b-2 border-slate-700 transition-all duration-500 focus:border-secondary hover:border-secondary dark:focus:border-primary dark:hover:border-primary outline-none"
 				value={body}
 				name="body"
 				onChange={handleInputChange}></textarea>
-			{imageUrl ? (
-				<img
-					onClick={handlePictureUpload}
-					src={imageUrl}
-					alt="imagen"
-					className="rounded-lg mx-auto h-[40vh] mt-4 mb-2 object-contain aspect-[4/3] bg-white cursor-pointer"
-				/>
-			) : (
-				<div
-					onClick={handlePictureUpload}
-					className={`rounded-lg mx-auto h-[40vh] border-2 border-slate-700 cursor-pointer mt-4 mb-2 bg-transparent grid place-content-center ${
-						mobileEditScreen && 'overflow-hidden w-full'
-					} hover:border-primary transition-all duration-500`}>
+
+			<div
+				onClick={handlePictureUpload}
+				className={`rounded-lg mx-auto h-[40vh]  border-2 border-slate-700 cursor-pointer mt-4 mb-2 bg-transparent grid place-content-center overflow-hidden ${
+					mobileEditScreen && ' w-full'
+				} hover:border-primary transition-all duration-500`}>
+				{imageUrl ? (
+					<img
+						src={imageUrl}
+						alt="imagen"
+						className="rounded-lg mx-auto object-contain h-[40vh] aspect-[16/9]  cursor-pointer"
+					/>
+				) : (
 					<p className="text-xl font-bold text-slate-500">¡Prueba a subir una foto!</p>
-				</div>
-			)}
-			<button
-				onClick={handleDelete}
-				className="bg-slate-800 rounded-lg px-2">
-				Delete
-			</button>
+				)}
+				{imageUrl && (
+					<button
+						onClick={handleDelete}
+						className="bg-slate-800 hover:bg-red-800 transition-all duration-300 text-white rounded-lg px-2 py-1 md:py-0 absolute m-1 self-end z-10 ">
+						Delete image
+					</button>
+				)}
+			</div>
 		</form>
 	);
 };
