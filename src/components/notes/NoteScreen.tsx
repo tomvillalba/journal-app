@@ -34,6 +34,10 @@ export const NoteScreen = ({edit = false}) => {
 		dispatch(notes.startSaveNote(note));
 	};
 
+	const handleDelete = () => {
+		dispatch(notes.startDeleting(note.id as string));
+	};
+
 	return (
 		<form
 			onSubmit={handleSave}
@@ -52,7 +56,6 @@ export const NoteScreen = ({edit = false}) => {
 				name="title"
 				onChange={handleInputChange}
 			/>
-
 			<textarea
 				placeholder="What happened today"
 				className="w-full p-2 mt-2 h-32 bg-transparent border-b-2 border-slate-700 transition-all duration-500 focus:border-primary hover:border-primary outline-none"
@@ -75,6 +78,11 @@ export const NoteScreen = ({edit = false}) => {
 					<p className="text-xl font-bold text-slate-500">¡Prueba a subir una foto!</p>
 				</div>
 			)}
+			<button
+				onClick={handleDelete}
+				className="bg-slate-800 rounded-lg px-2">
+				Delete
+			</button>
 		</form>
 	);
 };

@@ -103,6 +103,27 @@ const startUploading = (file: File): any => {
 	};
 };
 
+const startDeleting = (id: string): any => {
+	return async (dispatch: Dispatch, getState: () => AppState) => {
+		const uid = getState().auth.id;
+		await db.doc(`${uid}/journal/notes/${id}`).delete();
+		dispatch(deleteNote(id));
+	};
+};
+
+const deleteNote = (id: string) => {
+	return {
+		type: Types.notesDelete,
+		payload: id,
+	};
+};
+
+const notesLogout = () => {
+	return {
+		type: Types.notesLogoutCleaning,
+	};
+};
+
 export const notes = {
 	startNewNote,
 	activeNote,
@@ -113,4 +134,7 @@ export const notes = {
 	refreshNote,
 	refreshNotes,
 	startUploading,
+	startDeleting,
+	deleteNote,
+	notesLogout,
 };

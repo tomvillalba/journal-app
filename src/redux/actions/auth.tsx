@@ -3,6 +3,7 @@ import {firebase, googleAuthProvider} from '../../components/auth/firebase/fireb
 import {Dispatch} from 'redux';
 import {Types} from '../../types';
 import {ui} from './ui';
+import {notes} from './notes';
 
 const startLoginEmailPassword = (email: string, password: string): any => {
 	return async (dispatch: Dispatch) => {
@@ -54,6 +55,7 @@ const startLogout = (): any => {
 	return async (dispatch: Dispatch) => {
 		await firebase.auth().signOut();
 		dispatch(logout());
+		dispatch(notes.notesLogout());
 	};
 };
 

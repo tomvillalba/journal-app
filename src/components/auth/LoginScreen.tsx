@@ -30,7 +30,6 @@ export const LoginScreen = () => {
 	const handleGoogleLogin = () => {
 		dispatch(auth.startGoogleLogin());
 	};
-	console.log('register scren');
 	return (
 		<>
 			<form
