@@ -35,14 +35,18 @@ export const NoteScreen = ({edit = false}) => {
 	};
 
 	return (
-		<form onSubmit={handleSave}>
-			<h2 className="font-bold text-3xl text-white text-center mb-5">
+		<form
+			onSubmit={handleSave}
+			className="">
+			<h2 className="font-bold text-3xl  text-center mb-5">
 				{edit ? 'Editar una tarea' : 'Crear una tarea'}
 			</h2>
 			<input
 				type="text"
 				placeholder="Some awesome title"
-				className="w-full rounded-lg p-2 mt-2 border-blue-500 focus:border-blue-500 outline-none"
+				className={
+					'w-full p-2 mt-2 bg-transparent border-b-2 bg-red-500 border-slate-700 transition-all duration-500 focus:border-primary hover:border-primary outline-none'
+				}
 				autoComplete="off"
 				value={title}
 				name="title"
@@ -51,7 +55,7 @@ export const NoteScreen = ({edit = false}) => {
 
 			<textarea
 				placeholder="What happened today"
-				className="w-full rounded-lg p-2 mt-2 h-32 border-blue-500 focus:border-blue-500 outline-none"
+				className="w-full p-2 mt-2 h-32 bg-transparent border-b-2 border-slate-700 transition-all duration-500 focus:border-primary hover:border-primary outline-none"
 				value={body}
 				name="body"
 				onChange={handleInputChange}></textarea>
@@ -64,9 +68,9 @@ export const NoteScreen = ({edit = false}) => {
 			) : (
 				<div
 					onClick={handlePictureUpload}
-					className={`rounded-lg mx-auto h-[40vh] mt-4 mb-2 bg-white grid place-content-center ${
+					className={`rounded-lg mx-auto h-[40vh] border-2 border-slate-700 cursor-pointer mt-4 mb-2 bg-transparent grid place-content-center ${
 						mobileEditScreen && 'overflow-hidden w-full'
-					}`}>
+					} hover:border-primary transition-all duration-500`}>
 					<p className="text-xl font-bold text-slate-500">¡Prueba a subir una foto!</p>
 				</div>
 			)}

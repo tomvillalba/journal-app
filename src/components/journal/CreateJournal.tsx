@@ -12,7 +12,7 @@ export const CreateJournal = () => {
 
 	return (
 		<main
-			className={` md:flex md:flex-col w-0 ${
+			className={`min-h-screen  md:flex md:flex-col w-0 ${
 				mobileEditScreen ? 'flex flex-col w-screen' : 'hidden'
 			} md:w-[50%] lg:w-[60%] app-right h-full py-5 px-7 `}>
 			{active && <NotesAppBar />}

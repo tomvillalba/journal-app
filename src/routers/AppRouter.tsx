@@ -1,10 +1,4 @@
-import {
-	BrowserRouter as Router,
-	Switch,
-	Redirect,
-	useHistory,
-	useLocation,
-} from 'react-router-dom';
+import {Routes, Route, BrowserRouter, Navigate} from 'react-router-dom';
 import {AuthRouter} from './AuthRouter';
 import {useEffect, useState} from 'react';
 import firebase from 'firebase/app';
@@ -19,7 +13,6 @@ export const AppRouter = () => {
 	const dispatch = useDispatch();
 	const [checking, setChecking] = useState(true);
 	const [logged, setLogged] = useState(false);
-
 	useEffect(() => {
 		firebase.auth().onAuthStateChanged(async (user) => {
 			if (user?.uid) {
@@ -36,24 +29,39 @@ export const AppRouter = () => {
 	if (checking) {
 		return <h1>Wait...</h1>;
 	}
-
 	return (
-		<Router>
-			<>
-				<Switch>
-					<PublicRoute
-						path="/auth"
-						isAuthenticated={logged}
-						component={AuthRouter}
-					/>
-					<PrivateRoute
-						isAuthenticated={logged}
-						component={JournalScreen}
-						path={'/'}
-					/>
-					<Redirect to={'/auth/login'} />
-				</Switch>
-			</>
-		</Router>
+		<BrowserRouter>
+			<Routes>
+				<Route
+					path="/auth/login"
+					element={
+						<PublicRoute isAuthenticated={logged}>
+							<AuthRouter />
+						</PublicRoute>
+					}
+				/>
+				<Route
+					path="/auth/register"
+					element={
+						<PublicRoute isAuthenticated={logged}>
+							<AuthRouter login={false} />
+						</PublicRoute>
+					}
+				/>
+
+				<Route
+					path={'/'}
+					element={
+						<PrivateRoute isAuthenticated={logged}>
+							<JournalScreen />
+						</PrivateRoute>
+					}
+				/>
+				<Route
+					path="*"
+					element={<Navigate to="/" />}
+				/>
+			</Routes>
+		</BrowserRouter>
 	);
 };

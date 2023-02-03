@@ -1,17 +1,17 @@
-import {Redirect, Route} from 'react-router-dom';
-import {RouterProps} from '../types';
+import {Navigate} from 'react-router-dom';
 
 export const PrivateRoute = ({
+	children,
 	isAuthenticated,
-	component: Component,
-	...rest
-}: RouterProps) => {
-	return (
-		<Route
-			{...rest}
-			component={(props: RouterProps) =>
-				isAuthenticated ? <Component {...props} /> : <Redirect to="/auth/login" />
-			}
-		/>
+}: {
+	children: JSX.Element;
+	isAuthenticated: boolean;
+}) => {
+	return isAuthenticated ? (
+		children
+	) : (
+		<>
+			<Navigate to="/auth/login" />
+		</>
 	);
 };

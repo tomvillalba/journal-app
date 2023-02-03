@@ -1,13 +1,18 @@
-import {Redirect, Route} from 'react-router-dom';
-import {RouterProps} from '../types';
+import {Navigate} from 'react-router-dom';
 
-export const PublicRoute = ({isAuthenticated, component: Component, ...rest}: RouterProps) => {
-	return (
-		<Route
-			{...rest}
-			component={(props: RouterProps) =>
-				isAuthenticated ? <Redirect to="/" /> : <Component {...props} />
-			}
+export const PublicRoute = ({
+	children,
+	isAuthenticated,
+}: {
+	children: JSX.Element;
+	isAuthenticated: boolean;
+}) => {
+	return !isAuthenticated ? (
+		children
+	) : (
+		<Navigate
+			to="/"
+			replace={true}
 		/>
 	);
 };

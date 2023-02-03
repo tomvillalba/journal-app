@@ -29,7 +29,7 @@ export const NotesAppBar = () => {
 		<nav className="flex justify-between">
 			<button
 				onClick={handleCloseNote}
-				className="text-blue-500 hover:text-blue-600 font-medium">
+				className="text-primary dark:text-primary-dark hover:text-blue-600 font-medium transition-all">
 				Cerrar
 			</button>
 			<input
@@ -43,12 +43,12 @@ export const NotesAppBar = () => {
 			<div>
 				<button
 					onClick={handlePictureUpload}
-					className="text-blue-500 hover:text-blue-600 font-medium mr-4">
+					className="text-primary dark:text-blue-500 hover:text-blue-600 font-medium mr-4 transition-all">
 					Subir Imagen
 				</button>
 				<button
 					onClick={handleSave}
-					className="text-blue-500 hover:text-blue-600 font-medium">
+					className="text-primary dark:text-blue-500 hover:text-blue-600 font-medium transition-all">
 					Guardar
 				</button>
 			</div>

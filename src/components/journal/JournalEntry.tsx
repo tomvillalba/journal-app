@@ -7,7 +7,6 @@ import '../../styles/card.css';
 export const JournalEntry = ({id, date, title, body, imageUrl}: Note) => {
 	const noteDate = Moment(date);
 	const dispatch = useDispatch();
-
 	const handleEntryClick = () => {
 		dispatch(notes.activeNote(id as string, {date, title, body, imageUrl}));
 	};
@@ -15,7 +14,7 @@ export const JournalEntry = ({id, date, title, body, imageUrl}: Note) => {
 		<div
 			onClick={handleEntryClick}
 			className="card h-auto">
-			<div className={`img-section ${imageUrl && 'bg-white'}`}>
+			<div className={`img-section bg-[#56C4E5] ${imageUrl && 'bg-white'}`}>
 				{imageUrl ? (
 					<img
 						src={imageUrl}
@@ -33,13 +32,13 @@ export const JournalEntry = ({id, date, title, body, imageUrl}: Note) => {
 					</svg>
 				)}
 			</div>
-			<div className="card-desc">
+			<div className="card-desc bg-card-primary">
 				<div className="card-header">
 					<div className="card-title">{title}</div>
 					<div className="card-menu">
-						<div className="dot"></div>
-						<div className="dot"></div>
-						<div className="dot"></div>
+						<div className="dot bg-card-secondary"></div>
+						<div className="dot bg-card-secondary"></div>
+						<div className="dot bg-card-secondary"></div>
 					</div>
 				</div>
 				<div className="card-body">{body}</div>
