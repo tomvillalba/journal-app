@@ -61,9 +61,10 @@ export const NoteScreen = ({edit = false}) => {
 				onChange={handleInputChange}></textarea>
 			{imageUrl ? (
 				<img
+					onClick={handlePictureUpload}
 					src={imageUrl}
 					alt="imagen"
-					className="rounded-lg mx-auto h-[40vh] mt-4 mb-2 object-contain aspect-[4/3] bg-white"
+					className="rounded-lg mx-auto h-[40vh] mt-4 mb-2 object-contain aspect-[4/3] bg-white cursor-pointer"
 				/>
 			) : (
 				<div
